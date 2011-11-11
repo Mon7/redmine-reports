@@ -19,6 +19,9 @@ map '/assets' do
 end
 
 map '/' do
+  use Rack::Auth::Basic do |username, password|
+    [username, password] == [ENV['HEROKU_USERNAME'],ENV['HEROKU_PASSWORD']]
+  end
   use Rack::Static, {
     :root => "public",
     :urls => ["/images", "/fonts", "/favicon.ico", "/robots.txt"],
