@@ -1,0 +1,9 @@
+//=require jquery/jquery-1.6.4.js
+//=require twitter-bootstrap/js/bootstrap-alerts.js
+//=require twitter-bootstrap/js/bootstrap-dropdown.js
+//=require twitter-bootstrap/js/bootstrap-modal.js
+//=require twitter-bootstrap/js/bootstrap-scrollspy.js
+//=require twitter-bootstrap/js/bootstrap-tabs.js
+//=require twitter-bootstrap/js/bootstrap-twipsy.js
+//=require twitter-bootstrap/js/bootstrap-popover.js
+//=require tablesorter/jquery.tablesorter.js
