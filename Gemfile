@@ -10,7 +10,6 @@ gem 'pdfkit'
 gem "wkhtmltopdf-binary", :git => 'git://github.com/unixmonkey/wkhtmltopdf_binary_gem.git'
 
 gem 'sprockets'
-gem 'sprockets-urlrewriter'
 gem 'uglifier'
 gem 'therubyracer'
 gem 'coffee-script'
