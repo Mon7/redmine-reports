@@ -1,1 +1,13 @@
 %h1 Välkommen
+%table
+  %thead
+    %tr
+      %th Namn
+      %th
+  %tbody
+    -@projects.each do |p|
+      %tr
+        %td= p['identifier']
+        %td
+          %a{:href=>"/#{p['identifier']}.pdf"} pdf
+          

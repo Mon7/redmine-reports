@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{:name=>'pdfkit-page_size', :content=>'Letter'}
+  %body
+    .container
+      %table
+        %thead
+          %tr
+            %th Datum
+            %th Användare
+            %th Timmar
+        %tbody
+          -@project.each do |p|
+            %tr
+              %td= Date.parse(p['spent_on']).strftime("%Y-%m-%d")
+              %td= p['user']['name']
+              %td{:style=>'text-align: right'}= p['hours']
+
