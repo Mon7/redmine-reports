@@ -16,7 +16,7 @@ class Redmine
     @conn = EventMachine::HttpRequest.new('http://redmine.mon7.se')
     @conn.use Parser
     @options = {
-      :head => {'X-Redmine-API-Key' => ENV['redmine-key']},
+      :head => {'X-Redmine-API-Key' => ENV['redmine_key']},
       :limit => 100
     }
   end
