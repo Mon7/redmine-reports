@@ -19,8 +19,10 @@ map '/assets' do
 end
 
 map '/' do
-  use Rack::Auth::Basic do |username, password|
-    [username, password] == [ENV['HEROKU_USERNAME'],ENV['HEROKU_PASSWORD']]
+  if ENV['RACK_ENV'] == 'production'
+    use Rack::Auth::Basic do |username, password|
+      [username, password] == [ENV['HEROKU_USERNAME'],ENV['HEROKU_PASSWORD']]
+    end
   end
   use Rack::Static, {
     :root => "public",
