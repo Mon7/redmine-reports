@@ -8,7 +8,7 @@
   %tbody
     -@projects.each do |p|
       %tr
-        %form{:action=>"/#{p['identifier']}.pdf"}
+        %form{:method=>:get, :action=>"/#{p['identifier']}.pdf"}
           %td= p['identifier']
           %td
             %select(id="period" name="period")

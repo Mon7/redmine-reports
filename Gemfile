@@ -20,6 +20,7 @@ group :development do
   gem 'rb-inotify', :require => false #linux
   gem 'rb-fsevent', :require => false #mac
   gem 'growl', :require => false #mac
+  gem "wkhtmltopdf-binary" #, :git => 'git://github.com/unixmonkey/wkhtmltopdf_binary_gem.git'
 
 	gem 'guard-rspec'
 	gem 'launchy'
