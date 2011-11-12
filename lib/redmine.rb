@@ -16,8 +16,7 @@ class Redmine
     @conn = EventMachine::HttpRequest.new('http://redmine.mon7.se')
     @conn.use Parser
     @options = {
-      :head => {'X-Redmine-API-Key' => ENV['redmine_key']},
-      :limit => 100
+      :head => {'X-Redmine-API-Key' => ENV['redmine_key']}
     }
   end
   def get name, period

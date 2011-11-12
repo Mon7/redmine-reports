@@ -8,20 +8,26 @@
   %tbody
     -@projects.each do |p|
       %tr
-        %form{:method=>:get, :action=>"/#{p['identifier']}.pdf"}
-          %td= p['identifier']
-          %td
-            %select(id="period" name="period")
-              %option(value="all")närsom
-              %option(value="today")idag
-              %option(value="yesterday")igår
-              %option(value="current_week")denna vecka
-              %option(value="last_week")senaste veckan
-              %option(value="7_days")senaste 7 dagarna
-              %option(value="current_month")denna månad
-              %option(value="last_month" selected="selected")senaste månaden
-              %option(value="30_days")senaste 30 dagarna
-              %option(value="current_year")detta året
-          %td
-            %button.btn Hämta pdf
-          
+        %td= p['name'] || p['identifier']
+        %td
+          %select(id="period" name="period")
+            %option(value="all")närsom
+            %option(value="today")idag
+            %option(value="yesterday")igår
+            %option(value="current_week")denna vecka
+            %option(value="last_week")senaste veckan
+            %option(value="7_days")senaste 7 dagarna
+            %option(value="current_month")denna månad
+            %option(value="last_month" selected="selected")senaste månaden
+            %option(value="30_days")senaste 30 dagarna
+            %option(value="current_year")detta året
+        %td
+          %button.btn.info{:value=>p['identifier']} Hämta pdf
+:javascript
+  $(function() {
+    $("button").click(function() {
+      var url = '/' + this.value +'.pdf';
+      url += "?period=" + $(this).parent().prev().children("select").val();
+      window.location.href = url;
+    });
+  });
