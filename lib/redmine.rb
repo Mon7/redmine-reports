@@ -4,7 +4,7 @@ require 'json'
 
 class Parser
   def response(resp)
-    resp.response = JSON.parse(resp.response)
+    resp.response = JSON.parse(resp.response) unless resp.response.empty?
   end
   def request(client, head, body)
     [head, body]
