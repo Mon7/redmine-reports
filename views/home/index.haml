@@ -3,11 +3,25 @@
   %thead
     %tr
       %th Namn
+      %th Period
       %th
   %tbody
     -@projects.each do |p|
       %tr
-        %td= p['identifier']
-        %td
-          %a{:href=>"/#{p['identifier']}.pdf"} pdf
+        %form{:action=>"/#{p['identifier']}.pdf"}
+          %td= p['identifier']
+          %td
+            %select(id="period" name="period")
+              %option(value="all")närsom
+              %option(value="today")idag
+              %option(value="yesterday")igår
+              %option(value="current_week")denna vecka
+              %option(value="last_week")senaste veckan
+              %option(value="7_days")senaste 7 dagarna
+              %option(value="current_month")denna månad
+              %option(value="last_month" selected="selected")senaste månaden
+              %option(value="30_days")senaste 30 dagarna
+              %option(value="current_year")detta året
+          %td
+            %button.btn Hämta pdf
           

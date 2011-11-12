@@ -20,8 +20,8 @@ class Redmine
       :limit => 100
     }
   end
-  def get name
-    url = "/projects/#{name}/time_entries.json?period_type=1&period=last_month"
+  def get name, perido
+    url = "/projects/#{name}/time_entries.json?period_type=1&period=#{period}"
     @conn.get({:path=>url}.merge(@options)).response
   end
   def projects

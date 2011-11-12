@@ -15,7 +15,7 @@ class Home < Base
   get '/:name.pdf' do |name|
     content_type 'application/pdf'
     response['Content-Disposition'] = "attachment; filename=#{name}_#{Date.today.strftime("%B")}.pdf"
-    @project = redmine.get(name)['time_entries']
+    @project = redmine.get(name, params[:period])['time_entries']
     pdf(:debiteringsunderlag)
   end
 end
