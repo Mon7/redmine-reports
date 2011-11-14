@@ -14,23 +14,21 @@ map '/assets' do
   s.append_path 'vendor/assets'
   s.js_compressor = Uglifier.new if ENV['RACK_ENV'] == 'production'
   s.register_preprocessor 'text/css', Sprockets::UrlRewriter
-  s.cache = Sprockets::Cache::FileStore.new("tmp/sprockets")
+  s.cache = Sprockets::Cache::FileStore.new("tmp")
   run s
 end
 
 map '/' do
-  if ENV['RACK_ENV'] == 'production'
-    use Rack::Auth::Basic do |username, password|
-      [username, password] == [ENV['HEROKU_USERNAME'],ENV['HEROKU_PASSWORD']]
-    end
-  end
   use Rack::Static, {
     :root => "public",
     :urls => ["/images", "/fonts", "/favicon.ico", "/robots.txt"],
     :cache_control => "public,max-age=#{365 * 24 * 3600}"
   }
-  use Rack::Session::Cookie, :secret => ENV['session_secret'] || 'A5QnDPLndHQRhFhudvfghQBc3iFgtuwZwo4xrR856hcYbd80Ow6T43G1Vr1VC0c6', :expire_after => 365 * 24 * 3600
+  use Rack::Session::Cookie,
+    :secret => ENV['session_secret'] || 'A5QnDPLndHQRhFhudvfghQBc3iFgtuwZwo4xrR856hcYbd80Ow6T43G1Vr1VC0c6', :expire_after => 3600 * 24
   use Rack::MethodOverride
+
+  use AuthController
 
   map '/' do
     run Home

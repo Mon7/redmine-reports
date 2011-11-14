@@ -1,0 +1,13 @@
+%form{:method=>:post}
+  %fieldset
+    %legend Loggain
+    .clearfix
+      %label Användarnamn
+      .input
+        %input{:name=>:username}
+    .clearfix
+      %label Lösenord
+      .input
+        %input{:type=>:password, :name=>:password}
+    .actions
+      %button.btn.primary Logga in

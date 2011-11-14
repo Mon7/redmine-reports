@@ -2,12 +2,12 @@ require './lib/base'
 require 'pdfkit'
 
 class Home < Base
-
   helpers do
     def redmine
-      Redmine.new
+      Redmine.new(session[:username], session[:password])
     end
   end
+  
   get '/' do
     @projects = redmine.projects['projects']
     haml :index

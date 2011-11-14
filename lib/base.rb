@@ -1,11 +1,8 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
-require 'sinatra/synchrony'
 require 'haml'
 
 class Base < Sinatra::Base
-  register Sinatra::Synchrony
-
   set :views => lambda {"views/#{self.name.split(/Controller/).first.downcase}"}, :pdf_views => lambda {views + "/pdf"}
   set :haml, :layout => :'/../layout', :format => :html5, :escape_html => true
   before do

@@ -2,7 +2,7 @@ source :rubygems
 
 gem 'rake'
 gem 'sinatra'
-gem 'sinatra-synchrony'
+gem 'httparty'
 gem 'sinatra-contrib'
 gem 'haml'
 gem 'thin'
