@@ -10,10 +10,12 @@ gem 'pdfkit'
 
 gem 'sprockets'
 gem 'sprockets-urlrewriter'
+gem 'sprockets-cache-redis'
 gem 'uglifier'
 gem 'therubyracer'
 gem 'coffee-script'
 gem 'less'
+gem 'redis'
 
 group :development do
   gem 'guard'

@@ -5,6 +5,7 @@ require './config/environment'
 
 require 'sprockets'
 require 'sprockets-urlrewriter'
+require 'sprockets-cache-redis'
 require 'uglifier'
 require 'coffee_script'
 map '/assets' do
@@ -14,7 +15,7 @@ map '/assets' do
   s.append_path 'vendor/assets'
   s.js_compressor = Uglifier.new if ENV['RACK_ENV'] == 'production'
   s.register_preprocessor 'text/css', Sprockets::UrlRewriter
-  s.cache = Sprockets::Cache::FileStore.new("tmp")
+  s.cache = Sprockets::Cache::RedisStore.new($redis, 'sprockets')
   run s
 end
 
