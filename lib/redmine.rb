@@ -8,8 +8,12 @@ class Redmine
   def initialize(user, pass)
     self.class.basic_auth(user, pass)
   end
-  def get name, period
+  def get_project name, period
     url = "/projects/#{name}/time_entries.json?period_type=1&period=#{period}"
+    self.class.get url
+  end
+  def get_issues name
+    url = "/projects/#{name}/issues.json?limit=100"
     self.class.get url
   end
 

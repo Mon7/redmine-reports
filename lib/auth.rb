@@ -2,7 +2,6 @@ require './lib/base'
 
 class AuthController < Base
   before do
-    p session
     unless /^\/log(?:in|out)/ =~ request.path or session[:username]
       return redirect url("/login?return_url=#{request.path}") 
     end

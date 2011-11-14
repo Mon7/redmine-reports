@@ -12,10 +12,12 @@ class Home < Base
     @projects = redmine.projects['projects']
     haml :index
   end
+
   get '/:name.pdf' do |name|
     content_type 'application/pdf'
-    response['Content-Disposition'] = "attachment; filename=#{name}_#{Date.today.strftime("%B")}.pdf"
-    @project = redmine.get(name, params[:period])['time_entries']
+    response['Content-Disposition'] = "inline; filename=#{name}_#{Date.today.strftime("%B")}.pdf"
+    @project = redmine.get_project(name, params[:period])['time_entries']
+    @issues = redmine.get_issues(name)['issues']
     pdf(:debiteringsunderlag)
   end
 end

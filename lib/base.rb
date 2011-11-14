@@ -16,7 +16,7 @@ class Base < Sinatra::Base
     def pdf(pdf_view)
       html = haml(pdf_view, :views => settings.pdf_views, :layout => false)
       kit = PDFKit.new(html)
-      kit.stylesheets << "./assets/css/site.css"
+      kit.stylesheets << "./vendor/assets/twitter-bootstrap/bootstrap.css"
       kit.to_pdf
     end
   end
