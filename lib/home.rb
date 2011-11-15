@@ -16,7 +16,7 @@ class Home < Base
   get '/:name.pdf' do |name|
     content_type 'application/pdf'
     response['Content-Disposition'] = "inline; filename=#{name}_#{Date.today.strftime("%B")}.pdf"
-    @project = redmine.get_project(name, params[:period])['time_entries']
+    @project = redmine.get_project(name, params[:period])['time_entries'].compact
     @issues = redmine.get_issues(name)['issues']
     pdf(:debiteringsunderlag)
   end

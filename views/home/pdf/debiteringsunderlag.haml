@@ -23,10 +23,11 @@
             %td
         %tbody
           -@project.each do |p|
+            -issue = @issues.select {|i| i['id'] == p['issue']['id']}.first
             %tr
               %td= Date.parse(p['spent_on']).strftime("%Y-%m-%d")
               %td= p['user']['name']
               %td= p['activity']['name']
-              %td= @issues.select {|i| i['id'] == p['issue']['id']}.first['subject']
+              %td= issue ? issue['subject'] : ''
               %td.text-right= p['hours']
               %td= p['comments']
