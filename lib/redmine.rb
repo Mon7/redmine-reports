@@ -3,7 +3,7 @@ require 'httparty'
 
 class Redmine
   include HTTParty
-  base_uri('redmine.mon7.se')
+  base_uri(ENV['base_uri'])
 
   def initialize(user, pass)
     self.class.basic_auth(user, pass)
