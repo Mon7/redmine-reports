@@ -1,0 +1,13 @@
+%img{:src=>@result.piechart_url, :alt=>"Procentuell Förändring"}
+%ul.tabs
+  -@result.projects.each do |p|
+    %li
+      %a{:href=>"##{p.name}"}= p.name
+.tab-content
+  -@result.projects.each do |p|
+    %div{:id=>p.name}
+      %img{:src => p.linechart_url, :alt=>p.name}
+:javascript
+  $(function() {
+    $(".tabs").tabs();
+  });

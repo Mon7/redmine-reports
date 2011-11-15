@@ -12,6 +12,10 @@ class Home < Base
     @projects = redmine.projects['projects']
     haml :index
   end
+  get '/statistics' do
+    @result = redmine.time_entries(params['period'])
+    haml :stat
+  end
 
   get '/:name.pdf' do |name|
     content_type 'application/pdf'

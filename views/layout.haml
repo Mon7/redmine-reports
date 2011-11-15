@@ -11,6 +11,16 @@
           .container
             %h3
               %a{:href => "#"} Mon 7 Consulting AB
+            %ul.nav
+              %li.dropdown
+                %a.dropdown-toggle{:href=>'#'} Statistik
+                %ul.dropdown-menu
+                  %li
+                    %a{:href=>"/statistics?period=current_month"} Denna månaden
+                  %li
+                    %a{:href=>"/statistics?period=last_month"} Förra månaden
+                  %li
+                    %a{:href=>"/statistics?period=current_year"} Hela året
             .pull-right
               %ul
                 %li
