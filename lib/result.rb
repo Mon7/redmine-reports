@@ -39,15 +39,16 @@ class Project
     end
   end
   def linechart_url
+    upper_value = entry_points.max * 1.2
     url = "http://chart.apis.google.com/chart"
     url += "?chxl=0:|#{period.join('|')}"
     url += "&chxs=0,00AA00,14,0.5,l,676767"
     url += "&chxt=x,y"
-    url += "&chxr=1,0,50"
+    url += "&chxr=1,0,#{upper_value}"
     url += "&chs=700x350"
     url += "&cht=lc"
     url += "&chco=0000FF"
-    url += "&chds=0,50"
+    url += "&chds=0,#{upper_value}"
     url += "&chd=t:#{entry_points.join(',')}"
     url += "&chg=20,25"
     url += "&chls=3,3,4"
