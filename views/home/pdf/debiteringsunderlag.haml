@@ -10,7 +10,7 @@
             %th{:style=>'width: 15%'} Datum
             %th{:style=>'width: 15%'} Användare
             %th{:style=>'width: 10%'} Aktivitet
-            %th{:style=>'width: 20%'} Ämne
+            %th{:style=>'width: 20%'} Ärende
             %th{:style=>'width: 5%'} Timmar
             %th{:style=>'width: 35%'} Kommentar
         %tfoot
@@ -23,7 +23,7 @@
             %td
         %tbody
           -@project.each do |p|
-            -issue = @issues.select {|i| i['id'] == p['issue'] ? p['issue']['id'] : 0}.first
+            -issue = @issues.select {|i| i['id'].to_i == (p['issue'] ? p['issue']['id'].to_i : '')}.first
             %tr
               %td= Date.parse(p['spent_on']).strftime("%Y-%m-%d")
               %td= p['user'] ? p['user']['name'] : ''
