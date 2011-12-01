@@ -42,7 +42,7 @@ class Redmine
     nr_of_time_entries = ((count - 100)/100.0).ceil
     nr_of_time_entries.times do |i|
       url = "/projects/#{name}/issues.json?limit=100&offset=#{100 * (i + 1)}&set_filter=1&f%5B%5D=status_id&op%5Bstatus_id%5D=*&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=updated_on&group_by="
-      res['time_entries'] += self.class.get(url)['time_entries']
+      res['issues'] += self.class.get(url)['issues']
     end
     res
   end
